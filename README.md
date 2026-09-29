@@ -42,4 +42,5 @@ Dino Brain Adventure terdiri dari beberapa bagian utama, yaitu:
    - Menampilkan hasil tantangan kognitif.
    - Menampilkan status berhasil atau game over.
   
+https://drive.google.com/drive/folders/128AwlGwAMme5nobvRz7CVp6mztQo7vBc?usp=drive_link
 
