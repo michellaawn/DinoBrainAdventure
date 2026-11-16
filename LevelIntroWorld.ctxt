@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=LevelIntroWorld
+comment0.text=Layar\ "LEVEL\ N"\ +\ loading\ singkat\ sebelum\ level\ dimulai.\ (Dulu\ "TransitionLevel1")
+comment1.params=levelNo
+comment1.target=LevelIntroWorld(int)
+comment2.params=
+comment2.target=void\ act()
+numComments=3

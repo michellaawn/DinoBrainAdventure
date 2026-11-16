@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=DimLayer
+comment0.text=Lapisan\ gelap\ transparan\ di\ belakang\ jendela\ kuis\ supaya\ pemain\ fokus\ ke\ soal.
+comment1.params=
+comment1.target=DimLayer()
+numComments=2

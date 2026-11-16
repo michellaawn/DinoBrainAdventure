@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=GameOverWorld
+comment0.text=Layar\ Game\ Over\:\ Coba\ Lagi\ (ulang\ level\ yang\ sama)\ atau\ kembali\ ke\ menu.
+comment1.params=levelNo
+comment1.target=GameOverWorld(int)
+comment2.params=
+comment2.target=void\ run()
+comment3.params=
+comment3.target=void\ run()
+numComments=4

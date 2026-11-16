@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Sprite
+comment0.text=Aktor\ gambar\ biasa\ (logo,\ pohon,\ hiasan).\ Tidak\ berbuat\ apa-apa.
+comment1.params=file\ width
+comment1.target=Sprite(java.lang.String,\ int)
+comment1.text=Skala\ berdasarkan\ lebar,\ tinggi\ mengikuti\ proporsi.
+comment2.params=file\ width\ height
+comment2.target=Sprite(java.lang.String,\ int,\ int)
+comment2.text=Ukuran\ persis.
+numComments=3

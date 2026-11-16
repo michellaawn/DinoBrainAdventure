@@ -1,0 +1,33 @@
+#BlueJ class context
+comment0.target=MemoryPanel
+comment0.text=\r\n\ Jendela\ Mystery\ Box\ untuk\ Level\ 3\:\ permainan\ kartu\ memori.\r\n\ Klik\ dua\ kartu\ untuk\ membukanya;\ kalau\ gambarnya\ sama,\ kartu\ tetap\ terbuka.\r\n\ Cocokkan\ semua\ pasangan\ sebelum\ waktu\ habis\ \=\ jawaban\ BENAR.\r\n\r\n\ Gambar\ kartu\ dan\ posisinya\ diacak\ setiap\ kali\ panel\ ini\ dibuka\ (lihat\ MemoryBoard).\r\n\ Hasilnya\ dikirim\ ke\ BaseLevel.finishQuiz(benar/salah)\ seperti\ kuis\ biasa.\r\n
+comment1.params=
+comment1.target=MemoryPanel()
+comment10.params=img\ x\ y\ c
+comment10.target=void\ frame(greenfoot.GreenfootImage,\ int,\ int,\ greenfoot.Color)
+comment11.params=img
+comment11.target=void\ drawTimer(greenfoot.GreenfootImage)
+comment12.params=img
+comment12.target=void\ drawResult(greenfoot.GreenfootImage)
+comment13.params=
+comment13.target=greenfoot.GreenfootImage\ buildBase()
+comment14.params=g\ cx\ cy\ r
+comment14.target=void\ sparkle(greenfoot.GreenfootImage,\ int,\ int,\ int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=i
+comment3.target=void\ click(int)
+comment4.params=
+comment4.target=boolean\ animate()
+comment4.text=Menggeser\ progres\ balik\ kartu;\ true\ kalau\ masih\ ada\ yang\ bergerak.
+comment5.params=mx\ my
+comment5.target=int\ cardAt(int,\ int)
+comment6.params=i
+comment6.target=int\ cardX(int)
+comment7.params=i
+comment7.target=int\ cardY(int)
+comment8.params=
+comment8.target=void\ render()
+comment9.params=img\ i
+comment9.target=void\ drawCard(greenfoot.GreenfootImage,\ int)
+numComments=15

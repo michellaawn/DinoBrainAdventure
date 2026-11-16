@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=LoadingBar
+comment0.text=Bar\ loading.\ Panggil\ setProgress(0..100).
+comment1.params=
+comment1.target=LoadingBar()
+comment2.params=p
+comment2.target=void\ setProgress(int)
+numComments=3

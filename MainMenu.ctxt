@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=MainMenu
+comment0.text=Menu\ utama\:\ logo\ +\ tombol\ Start\ /\ Learn\ /\ Exit.\ (Dulu\ bernama\ "bg"\ +\ "Beranda_Logo")
+comment1.params=
+comment1.target=MainMenu()
+comment2.params=
+comment2.target=void\ run()
+comment3.params=
+comment3.target=void\ run()
+comment4.params=
+comment4.target=void\ run()
+numComments=5

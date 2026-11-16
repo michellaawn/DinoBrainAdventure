@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Spike
+comment0.text=Duri.\ Tabrakannya\ dicek\ oleh\ Dino\ (hurts),\ bukan\ oleh\ Spike\ sendiri.
+comment1.params=
+comment1.target=Spike()
+comment2.params=cx\ cy\ hw\ hh
+comment2.target=boolean\ hurts(int,\ int,\ int,\ int)
+comment2.text=Hitbox\ duri\ dibuat\ sedikit\ lebih\ kecil\ dari\ gambarnya\ agar\ adil.
+numComments=3

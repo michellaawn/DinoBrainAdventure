@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=StoryWorld
+comment0.text=Cerita\ pembuka.\ (Dulu\ "GAMESTART"\ +\ "dialog")\ Klik\ Next\ /\ tekan\ Enter\ /\ Spasi\ untuk\ lanjut.
+comment1.params=
+comment1.target=StoryWorld()
+comment2.params=
+comment2.target=void\ run()
+comment3.params=
+comment3.target=void\ run()
+comment4.params=
+comment4.target=void\ act()
+comment5.params=
+comment5.target=void\ advance()
+comment6.params=
+comment6.target=void\ startGame()
+numComments=7

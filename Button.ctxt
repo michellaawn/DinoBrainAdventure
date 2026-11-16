@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Button
+comment0.text=\r\n\ Tombol\ serbaguna.\ Ada\ dua\ jenis\:\r\n\ \ \ new\ Button("start.png",\ 170,\ ()\ ->\ aksi())\ \ \ \ \ \ \ \ \ \ ->\ tombol\ bergambar\r\n\ \ \ new\ Button("Lanjutkan",\ 220,\ 46,\ ()\ ->\ aksi())\ \ \ \ \ \ ->\ tombol\ teks\ bergaya\ kayu\r\n\ Membesar\ sedikit\ saat\ disorot\ mouse.\r\n
+comment1.params=imageFile\ width\ action
+comment1.target=Button(java.lang.String,\ int,\ java.lang.Runnable)
+comment1.text=Tombol\ bergambar\ (lebar\ ditentukan,\ tinggi\ proporsional).
+comment2.params=label\ width\ height\ action
+comment2.target=Button(java.lang.String,\ int,\ int,\ java.lang.Runnable)
+comment2.text=Tombol\ teks.
+comment3.params=label\ w\ h\ fill
+comment3.target=greenfoot.GreenfootImage\ draw(java.lang.String,\ int,\ int,\ greenfoot.Color)
+comment4.params=
+comment4.target=void\ act()
+numComments=5

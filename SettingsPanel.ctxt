@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=SettingsPanel
+comment0.text=\r\n\ Panel\ PENGATURAN\ (muncul\ saat\ tombol\ gear\ /\ tombol\ P\ ditekan).\r\n\ Latar\ kayu\ berasal\ dari\ images/panel_pengaturan.png.\ Slider,\ tombol\ -\ /\ +\ dan\r\n\ tombol\ mute\ digambar\ dinamis\ di\ sini.\ Tombol\ RESUME\ dan\ QUIT\ dipasang\ oleh\ BaseLevel.\r\n\r\n\ Cara\ pakai\:\ klik/seret\ slider,\ klik\ tombol\ -\ atau\ +,\ klik\ ikon\ speaker\ untuk\ mute.\r\n\r\n\ Koordinat\ di\ bawah\ (relatif\ terhadap\ pojok\ kiri-atas\ panel)\ HARUS\ sama\ dengan\r\n\ angka\ di\ gambar\ panel_pengaturan.png.\ Kalau\ gambar\ diganti,\ sesuaikan\ angkanya.\r\n
+comment1.params=
+comment1.target=SettingsPanel()
+comment10.params=
+comment10.target=void\ redraw()
+comment11.params=g\ row\ vol\ muted
+comment11.target=void\ drawSlider(greenfoot.GreenfootImage,\ int,\ int,\ boolean)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=lx\ ly
+comment3.target=void\ press(int,\ int)
+comment4.params=x\ y\ cx\ cy
+comment4.target=boolean\ near(int,\ int,\ int,\ int)
+comment5.params=row
+comment5.target=int\ rowY(int)
+comment6.params=row\ lx
+comment6.target=void\ setFromX(int,\ int)
+comment7.params=row\ delta
+comment7.target=void\ change(int,\ int)
+comment8.params=row\ v
+comment8.target=void\ set(int,\ int)
+comment9.params=row
+comment9.target=void\ toggleMute(int)
+numComments=12

@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=MysteryBox
+comment0.text=Kotak\ misteri\ melayang.\ Disentuh\ Dino\ ->\ membuka\ kuis.
+comment1.params=
+comment1.target=MysteryBox()
+comment2.params=
+comment2.target=void\ act()
+numComments=3
