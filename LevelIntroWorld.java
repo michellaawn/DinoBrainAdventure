@@ -5,6 +5,10 @@ public class LevelIntroWorld extends World
 {
     private static final int DURATION = 150;     // frame (~3 detik)
 
+    // ---- font layar transisi ----
+    private static final String  FONT_NAME = "Courier New";   // <-- jenis font di sini
+    private static final boolean FONT_BOLD = true;
+
     private final int levelNo;
     private int timer = 0;
     private final LoadingBar bar = new LoadingBar();
@@ -20,14 +24,29 @@ public class LevelIntroWorld extends World
         UI.dim(bg, 150);
         bg.drawImage(Assets.byWidth("LOGODINO.png", 300), 250, 20);
 
-        UI.shadow(bg, "LEVEL " + (levelNo < 10 ? "0" : "") + levelNo, 400, 205, 46, UI.GOLD, UI.DARK);
-        UI.shadow(bg, data.name, 400, 252, 26, Color.WHITE, Color.BLACK);
-        UI.bold(bg, data.tip, 400, 288, 17, new Color(230, 230, 230));
-        UI.bold(bg, "LOADING...", 400, 378, 16, new Color(255, 220, 120));
+        drawText(bg, "LEVEL " + (levelNo < 10 ? "0" : "") + levelNo, 400, 175, 46, UI.GOLD, UI.DARK);
+        drawText(bg, data.name, 400, 222, 26, Color.WHITE, Color.BLACK);
+        drawText(bg, data.tip, 400, 258, 17, new Color(230, 230, 230), null);
+        drawText(bg, "LOADING...", 400, 285, 16, new Color(255, 220, 120), null);
         setBackground(bg);
 
         addObject(bar, 400, 410);
-        addObject(walker, 120, 335);
+        addObject(walker, 120, 360);
+    }
+
+    /** Teks rata tengah dengan font pilihan sendiri. shade = warna bayangan (null = tanpa bayangan). */
+    private void drawText(GreenfootImage g, String s, int cx, int cy, int size, Color c, Color shade)
+    {
+        g.setFont(new Font(FONT_NAME, FONT_BOLD, false, size));
+        int x = cx - (int) (s.length() * size * 0.6) / 2;    // Courier New: lebar huruf = 60% ukuran
+        int y = cy + size / 3;                               // drawString memakai garis dasar huruf
+        if (shade != null)
+        {
+            g.setColor(shade);
+            g.drawString(s, x + 2, y + 2);
+        }
+        g.setColor(c);
+        g.drawString(s, x, y);
     }
 
     public void act()

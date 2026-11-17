@@ -14,7 +14,7 @@ public class StoryWorld extends World
         "I'm a bit scared, but I can't give up.\nI must find my way back!",
         "It's time to be brave.\nLet my journey begin!"
     };
-
+     
     private int index = 0;
     private final StoryDialog dialog = new StoryDialog();
     private Button nextBtn, startBtn;
@@ -22,7 +22,7 @@ public class StoryWorld extends World
     public StoryWorld()
     {
         super(GameConfig.WIDTH, GameConfig.HEIGHT, 1);
-        setBackground(Assets.get("bg_story.png", GameConfig.WIDTH, GameConfig.HEIGHT));
+        setBackground(Assets.get("bgs.jpg", GameConfig.WIDTH, GameConfig.HEIGHT));
 
         addObject(dialog, 400, 250);
         dialog.show(STORY[0]);
@@ -33,7 +33,7 @@ public class StoryWorld extends World
         startBtn = new Button("start_adventure.png", 230, new Runnable() {
             public void run() { startGame(); }
         });
-        addObject(nextBtn, 400, 405);
+        addObject(nextBtn, 400, 350);
     }
 
     public void act()
@@ -52,10 +52,10 @@ public class StoryWorld extends World
         index++;
         dialog.show(STORY[index]);
 
-        if (index == STORY.length - 1)          // dialog terakhir: ganti Next -> Start Adventure
+        if (index == STORY.length - 1)          
         {
             removeObject(nextBtn);
-            addObject(startBtn, 400, 405);
+            addObject(startBtn, 400, 350);
         }
     }
 

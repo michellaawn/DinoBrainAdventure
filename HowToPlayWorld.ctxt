@@ -5,4 +5,7 @@ comment1.params=
 comment1.target=HowToPlayWorld()
 comment2.params=
 comment2.target=void\ run()
-numComments=3
+comment3.params=g\ s\ cx\ cy\ size\ c\ shade
+comment3.target=void\ drawText(greenfoot.GreenfootImage,\ java.lang.String,\ int,\ int,\ int,\ greenfoot.Color,\ greenfoot.Color)
+comment3.text=Teks\ rata\ tengah\ dengan\ font\ pilihan\ sendiri.\ shade\ \=\ warna\ bayangan\ (null\ \=\ tanpa\ bayangan).
+numComments=4

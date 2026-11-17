@@ -18,6 +18,34 @@ public class UI
     public static final Color RED       = new Color(222, 62, 78);
     public static final Color GREEN     = new Color(72, 190, 90);
     public static final Color CLEAR     = new Color(0, 0, 0, 0);
+    
+    private static String fontName = null;
+    private static boolean fontBold = false;
+    private static double fontScale = 1.0;
+    private static final double CHAR_WIDTH = 0.6; 
+    
+    public static void useFont (String name, boolean bold, double scale){
+        fontName = name;
+        fontBold = bold;
+        fontScale = scale;
+    }
+    
+    public static void useDefaultFont(){
+        fontName = null;
+    }
+    
+    public static int fontSize (int size) {
+        return Math.max(8, (int) Math.round(size * fontScale));
+    }
+    
+    private static void drawCustom (GreenfootImage g, String s, int x, int cy, int size, Color c)
+    {
+        int fs = fontSize(size);
+        Color before = g.getColor();
+        g.setFont(new Font(fontName, fontBold, false, fs));
+        g.setColor(c);
+        g.drawString(s, x, cy + fs/3);
+    }
 
     // ------------------------------------------------------------ teks
     /** Teks rata tengah di titik (cx, cy). */

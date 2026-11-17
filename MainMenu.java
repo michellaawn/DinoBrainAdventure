@@ -12,14 +12,14 @@ public class MainMenu extends World
 
         addObject(new Button("start.png", 172, new Runnable() {
             public void run() { Greenfoot.setWorld(new StoryWorld()); }
-        }), 400, 262);
+        }), 400, 250);
 
         addObject(new Button("learn.png", 172, new Runnable() {
             public void run() { Greenfoot.setWorld(new HowToPlayWorld()); }
-        }), 400, 324);
+        }), 400, 300);
 
         addObject(new Button("exit.png", 172, new Runnable() {
             public void run() { Greenfoot.stop(); }
-        }), 400, 386);
+        }), 400, 350);
     }
 }

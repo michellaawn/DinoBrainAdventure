@@ -3,6 +3,9 @@ comment0.target=LevelIntroWorld
 comment0.text=Layar\ "LEVEL\ N"\ +\ loading\ singkat\ sebelum\ level\ dimulai.\ (Dulu\ "TransitionLevel1")
 comment1.params=levelNo
 comment1.target=LevelIntroWorld(int)
-comment2.params=
-comment2.target=void\ act()
-numComments=3
+comment2.params=g\ s\ cx\ cy\ size\ c\ shade
+comment2.target=void\ drawText(greenfoot.GreenfootImage,\ java.lang.String,\ int,\ int,\ int,\ greenfoot.Color,\ greenfoot.Color)
+comment2.text=Teks\ rata\ tengah\ dengan\ font\ pilihan\ sendiri.\ shade\ \=\ warna\ bayangan\ (null\ \=\ tanpa\ bayangan).
+comment3.params=
+comment3.target=void\ act()
+numComments=4
