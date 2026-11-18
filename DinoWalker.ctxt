@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=DinoWalker
-comment0.text=Dino\ berjalan\ di\ tempat\ (animasi\ saja),\ dipakai\ di\ layar\ loading.
-comment1.params=
-comment1.target=DinoWalker()
-comment2.params=
-comment2.target=void\ act()
-numComments=3

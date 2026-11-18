@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=LevelData
-comment0.text=\r\n\ \=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\ \ DESAIN\ LEVEL\ \ \=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\r\n\ Tiap\ level\ \=\ peta\ 16\ kolom\ x\ 9\ baris\ (1\ karakter\ \=\ 1\ kotak\ 50x50\ px).\r\n\ Baris\ paling\ atas\ (0)\ dipakai\ HUD,\ jadi\ biarkan\ kosong.\r\n\r\n\ \ \ .\ \ kosong\ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ \ tanah\ berumput\ (padat,\ bisa\ diinjak)\r\n\ \ \ d\ \ tanah\ (padat)\ \ \ \ \ \ \ ~\ \ air\ (jatuh\ \=\ mati)\r\n\ \ \ ^\ \ duri\ (kena\ \=\ mati)\ \ o\ \ koin\r\n\ \ \ ?\ \ Mystery\ Box\ (kuis)\ \ S\ \ posisi\ awal\ Dino\r\n\ \ \ F\ \ bendera\ finish\ \ \ \ \ \ T\ \ pohon\ (hiasan\ saja)\r\n\r\n\ Syarat\:\ tiap\ level\ harus\ punya\ tepat\ 1\ S,\ 1\ F\ dan\ 1\ ?\r\n\ Bendera\ baru\ aktif\ setelah\ Mystery\ Box\ dibuka\ dan\ kuisnya\ dijawab.\r\n
-comment1.params=name\ tip\ background\ map
-comment1.target=LevelData(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String[])
-comment2.params=level
-comment2.target=LevelData\ get(int)
-numComments=3

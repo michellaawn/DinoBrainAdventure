@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=Level3
-comment0.text=\r\n\ Level\ 3.\ Peta\ ada\ di\ LevelData.get(3),\ soal\ kuisnya\ di\ QuizData.get(3).\r\n\ Kalau\ level\ ini\ butuh\ sesuatu\ yang\ khusus,\ tambahkan\ di\ prepareExtras().\r\n
-comment1.params=
-comment1.target=Level3()
-comment2.params=
-comment2.target=void\ prepareExtras()
-numComments=3
