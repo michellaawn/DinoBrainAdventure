@@ -146,6 +146,7 @@ public abstract class BaseLevel extends World
     {
         int t = GameConfig.TILE;
         boolean[][] done = new boolean[GameConfig.ROWS][GameConfig.COLS];
+        String waterFile = (levelNo == 3) ? "air1.png" : "air.png";
 
         for (int r = 0; r < GameConfig.ROWS; r++)
         {
@@ -161,7 +162,7 @@ public abstract class BaseLevel extends World
                     for (int cc = c; cc < c + w; cc++) done[rr][cc] = true;
 
                 int pad = 4;                            // menyelip di bawah tanah kiri-kanan
-                bg.drawImage(Assets.get("air.png", w * t + pad * 2, h * t + pad), c * t - pad, r * t);
+                bg.drawImage(Assets.get(waterFile, w * t + pad * 2, h * t + pad), c * t - pad, r * t);
             }
         }
     }
@@ -338,8 +339,6 @@ public abstract class BaseLevel extends World
             box = null;
         }
 
-<<<<<<< HEAD
-        return;
     }
 
     // LEVEL 1 DAN 2
@@ -349,10 +348,8 @@ public abstract class BaseLevel extends World
         boxOpened = true;
 
         if (box != null)
-=======
         Audio.play(correct ? "benar.mp3" : "salah.mp3");
         if (correct)
->>>>>>> 4588560e0d94212d9c0523b1311e3db9d9f3b40a
         {
             removeObject(box);
             box = null;
@@ -431,7 +428,8 @@ public abstract class BaseLevel extends World
         return water[row][col];
     }
 
-    /** True kalau gameplay harus berhenti (pause, kuis terbuka, atau level selesai). */
+    /** True kalau gameplay harus berhenti (p
+     * ause, kuis terbuka, atau level selesai). */
     public boolean isFrozen()    { return paused || quizOpen || finished; }
     public boolean isPaused()    { return paused; }
     public boolean isGameOver()  { return gameOver; }
