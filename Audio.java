@@ -6,10 +6,12 @@ import java.util.HashMap;
  * tidak terjadi apa-apa (tidak error).
  *
  * Nama file yang dicari (taruh di folder sounds):
- *   music.mp3   musik latar (diputar berulang)
- *   coin.wav    ambil koin
- *   benar.wav   jawaban kuis benar
- *   salah.wav   jawaban kuis salah / waktu habis
+ *   music.mp3     musik latar (diputar berulang)
+ *   coin.mp3      ambil koin
+ *   benar.mp3     jawaban kuis benar
+ *   salah.mp3     jawaban kuis salah / waktu habis
+ *   gameover.mp3  kalah / nyawa habis
+ *   victory.mp3   menang / selesai level
  * Volume diatur dari panel Pengaturan (Settings).
  */
 public class Audio

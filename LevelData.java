@@ -35,7 +35,7 @@ public class LevelData
                 return new LevelData(
                     "THE FOREST OF KNOWLEDGE",
                     "Tip: sentuh Mystery Box lalu jawab kuisnya!",
-                    "bg_level1.png",
+                    "bg1.jpg",
                     new String[] {
                         //0123456789ABCDEF
                         "................",   // 0 (HUD)
@@ -53,7 +53,7 @@ public class LevelData
                 return new LevelData(
                     "THE SKY OF PUZZLES",
                     "Tip: loncati pulau-pulau melayang, jangan jatuh ke air!",
-                    "bg_level2_lake.png",
+                    "bg2.jpg",
                     new String[] {
                         //0123456789ABCDEF
                         "................",   // 0 (HUD)

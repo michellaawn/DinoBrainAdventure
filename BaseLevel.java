@@ -338,6 +338,7 @@ public abstract class BaseLevel extends World
             box = null;
         }
 
+<<<<<<< HEAD
         return;
     }
 
@@ -348,6 +349,10 @@ public abstract class BaseLevel extends World
         boxOpened = true;
 
         if (box != null)
+=======
+        Audio.play(correct ? "benar.mp3" : "salah.mp3");
+        if (correct)
+>>>>>>> 4588560e0d94212d9c0523b1311e3db9d9f3b40a
         {
             removeObject(box);
             box = null;
@@ -369,7 +374,7 @@ public abstract class BaseLevel extends World
     public void collectCoin(Coin c)
     {
         GameState.coins++;
-        Audio.play("coin.wav");
+        Audio.play("coin.mp3");
         GameState.score += GameConfig.SCORE_PER_COIN;
         addObject(new FloatingText("+" + GameConfig.SCORE_PER_COIN, 18, UI.GOLD, 40, 1),
                   c.getX(), c.getY() - 10);
@@ -386,6 +391,8 @@ public abstract class BaseLevel extends World
             GameState.lives = 0;
             gameOver = true;
             gameOverTimer = 80;
+            Audio.pauseMusic();
+            Audio.play("gameover.mp3");
         }
         refreshHud();
     }
@@ -395,6 +402,8 @@ public abstract class BaseLevel extends World
         if (finished || gameOver) return;
         finished = true;
         endTimer = 110;
+        Audio.pauseMusic();
+        Audio.play("victory.mp3");
         addObject(new FloatingText("LEVEL SELESAI!", 44, UI.GOLD, 110, 0),
                   GameConfig.WIDTH / 2, GameConfig.HEIGHT / 2 - 20);
     }

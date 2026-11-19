@@ -22,4 +22,7 @@ public class MainMenu extends World
             public void run() { Greenfoot.stop(); }
         }), 400, 350);
     }
+
+    public void started() { Audio.startMusic(); }
+    public void stopped() { Audio.pauseMusic(); }
 }
