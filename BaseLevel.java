@@ -25,11 +25,25 @@ public abstract class BaseLevel extends World
 
     private boolean quizOpen = false;
     private boolean boxOpened = false;
+    private static final int TARGET_QUIZ = 3;
+    private int quizCorrectThisLevel = 0;
     private boolean paused = false;
     private boolean finished = false;
     private boolean gameOver = false;
     private boolean pauseKeyWasDown = false;
     private int frames = 0, seconds = 0, endTimer = 0, gameOverTimer = 0;
+    
+    private void showQuizPanel()
+    {
+    dimLayer = new DimLayer();
+    addObject(dimLayer, GameConfig.WIDTH / 2, GameConfig.HEIGHT / 2);
+
+    quizPanel = new QuizPanel(QuizData.get(levelNo));
+
+    addObject(quizPanel,
+        GameConfig.WIDTH / 2,
+        GameConfig.HEIGHT / 2 + 8);
+    }
 
     /** Membuat level sesuai nomor (1..3). */
     public static BaseLevel create(int n)
@@ -47,6 +61,7 @@ public abstract class BaseLevel extends World
         super(GameConfig.WIDTH, GameConfig.HEIGHT, 1, false);   // false = Dino boleh jatuh keluar layar
         this.levelNo = levelNo;
         this.data = LevelData.get(levelNo);
+        QuizData.reset(levelNo);
 
         buildLevel();
         buildUI();
@@ -238,11 +253,20 @@ public abstract class BaseLevel extends World
         if (quizOpen || boxOpened || gameOver || finished) return;
         quizOpen = true;
         box = b;
-        dimLayer = new DimLayer();
-        addObject(dimLayer, GameConfig.WIDTH / 2, GameConfig.HEIGHT / 2);
-        if (levelNo == 3) quizPanel = new MemoryPanel();      // level 3 = kartu memori
-        else              quizPanel = new QuizPanel(QuizData.get(levelNo));
-        addObject(quizPanel, GameConfig.WIDTH / 2, GameConfig.HEIGHT / 2 + 8);
+        if (levelNo == 3)
+        {   
+            dimLayer = new DimLayer();
+            addObject(dimLayer, GameConfig.WIDTH / 2, GameConfig.HEIGHT / 2);
+            quizPanel = new MemoryPanel();
+
+            addObject(quizPanel,
+            GameConfig.WIDTH / 2,
+            GameConfig.HEIGHT / 2 + 8);
+        }
+        else
+        {
+        showQuizPanel();
+        }
     }
 
     /** Dipanggil QuizPanel setelah hasil jawaban selesai ditampilkan. */
@@ -250,40 +274,95 @@ public abstract class BaseLevel extends World
     {
         quizOpen = false;
         boxOpened = true;
+    // Hapus panel soal sebelumnya
+    if (quizPanel != null)
+    {
+        removeObject(quizPanel);
+        quizPanel = null;
+    }
 
-        if (quizPanel != null)
-        {
-            removeObject(quizPanel);
-            quizPanel = null;
-        }
-        if (dimLayer != null)
-        {
-            removeObject(dimLayer);
-            dimLayer = null;
-        }
+    if (dimLayer != null)
+    {
+        removeObject(dimLayer);
+        dimLayer = null;
+    }
 
-        int bx = GameConfig.WIDTH / 2, by = GameConfig.HEIGHT / 2;
+    int bx = GameConfig.WIDTH / 2;
+    int by = GameConfig.HEIGHT / 2;
+
+    if (box != null)
+    {
+        bx = box.getX();
+        by = box.getY();
+    }
+
+    Audio.play(correct ? "benar.wav" : "salah.wav");
+
+    if (correct)
+    {
+        GameState.score += GameConfig.SCORE_PER_CORRECT;
+        GameState.quizCorrect++;
+
+        addObject(new FloatingText(
+            "+" + GameConfig.SCORE_PER_CORRECT,
+            28, UI.GOLD, 70, 1
+        ), bx, by);
+
+        // Level 1 dan 2 menghitung jawaban benar
+        if (levelNo != 3)
+        {
+            quizCorrectThisLevel++;
+        }
+    }
+    else
+    {
+        loseLife();
+
+        addObject(new FloatingText(
+            "-1 nyawa",
+            24, UI.RED, 70, 1
+        ), bx, by);
+    }
+
+    refreshHud();
+
+    // LEVEL 3: permainan kartu memori tetap seperti sebelumnya
+    if (levelNo == 3)
+    {
+        quizOpen = false;
+        boxOpened = true;
+
         if (box != null)
         {
-            bx = box.getX();
-            by = box.getY();
             removeObject(box);
             box = null;
         }
 
-        Audio.play(correct ? "benar.wav" : "salah.wav");
-        if (correct)
+        return;
+    }
+
+    // LEVEL 1 DAN 2
+    if (quizCorrectThisLevel >= TARGET_QUIZ)
+    {
+        quizOpen = false;
+        boxOpened = true;
+
+        if (box != null)
         {
-            GameState.score += GameConfig.SCORE_PER_CORRECT;
-            GameState.quizCorrect++;
-            addObject(new FloatingText("+" + GameConfig.SCORE_PER_CORRECT, 28, UI.GOLD, 70, 1), bx, by);
+            removeObject(box);
+            box = null;
         }
-        else
-        {
-            loseLife();
-            addObject(new FloatingText("-1 nyawa", 24, UI.RED, 70, 1), bx, by);
-        }
-        refreshHud();
+
+        addObject(new FloatingText(
+            "3 SOAL SELESAI!",
+            30, UI.GOLD, 100, 0
+        ), GameConfig.WIDTH / 2, GameConfig.HEIGHT / 2);
+
+    }
+    else
+    {
+        showQuizPanel();
+    }
     }
 
     // ------------------------------------------------------------ event gameplay
