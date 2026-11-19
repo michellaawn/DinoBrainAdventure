@@ -14,6 +14,5 @@ public class Level3 extends BaseLevel
     @Override
     protected void prepareExtras()
     {
-        addObject(new Sprite("pohon.png", 100, 150), 50, 278);
     }
 }

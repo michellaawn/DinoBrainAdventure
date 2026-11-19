@@ -15,6 +15,5 @@ public class Level1 extends BaseLevel
     protected void prepareExtras()
     {
         addObject(new Sprite("pohon.png", 100, 150), 40, 278);
-
     }
 }

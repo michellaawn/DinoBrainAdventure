@@ -16,28 +16,52 @@ import java.util.ArrayList;
 public class QuizData
 {
     private static final ArrayList<Integer> usedOdd = new ArrayList<Integer>();
+    private static final ArrayList<Integer> usedPattern = new ArrayList<Integer>();
 
+    public static void reset(int level)
+    {
+        if (level == 1)
+        {
+            usedPattern.clear();
+        }
+        else if (level == 2)
+        {
+            usedOdd.clear();
+        }
+    }
+    
     public static Question get(int level)
     {
-        Question q;
+        Question[] bank;
+        ArrayList<Integer> used;
 
-        if (level <= 1)
+        if (level == 1)
         {
-            Question[] bank = patternBank();
-            q = bank[Greenfoot.getRandomNumber(bank.length)];
+            bank = patternBank();
+            used = usedPattern;
+        }
+        else if (level == 2)
+        {
+            bank = oddBank();
+            used = usedOdd;
         }
         else
         {
-            Question[] bank = oddBank();
-            if (level == 2) usedOdd.clear();                  // mulai putaran baru
-            if (usedOdd.size() >= bank.length) usedOdd.clear();
-
-            int i;
-            do { i = Greenfoot.getRandomNumber(bank.length); } while (usedOdd.contains(i));
-            usedOdd.add(i);
-            q = bank[i];
+            return null;
         }
-        return q.shuffled();
+
+        if (used.size() >= bank.length)
+        {
+            return null;
+        }
+        int i;
+        do
+        {
+            i = Greenfoot.getRandomNumber(bank.length);
+        }
+        while (used.contains(i));
+        used.add(i);
+        return bank[i].shuffled();
     }
 
     // ------------------------------------------------------------ LEVEL 1: pola
