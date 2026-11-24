@@ -1,10 +1,10 @@
 import greenfoot.*;
 
 /**
- * Tombol serbaguna. Ada dua jenis:
- *   new Button("start.png", 170, () -> aksi())          -> tombol bergambar
- *   new Button("Lanjutkan", 220, 46, () -> aksi())      -> tombol teks bergaya kayu
- * Membesar sedikit saat disorot mouse.
+- Tombol serbaguna. Ada dua jenis:
+-   new Button("start.png", 170, () -> aksi())          -> tombol bergambar
+-   new Button("Lanjutkan", 220, 46, () -> aksi())      -> tombol teks bergaya kayu
+- Membesar sedikit saat disorot mouse.
  */
 public class Button extends Actor
 {
@@ -54,6 +54,7 @@ public class Button extends Actor
 
         if (Greenfoot.mouseClicked(this))
         {
+            Audio.play("click.mp3");
             action.run();
         }
     }

@@ -35,14 +35,14 @@ public abstract class BaseLevel extends World
     
     private void showQuizPanel()
     {
-    dimLayer = new DimLayer();
-    addObject(dimLayer, GameConfig.WIDTH / 2, GameConfig.HEIGHT / 2);
+        dimLayer = new DimLayer();
+        addObject(dimLayer, GameConfig.WIDTH / 2, GameConfig.HEIGHT / 2);
 
-    quizPanel = new QuizPanel(QuizData.get(levelNo));
+        quizPanel = new QuizPanel(QuizData.get(levelNo));
 
-    addObject(quizPanel,
-        GameConfig.WIDTH / 2,
-        GameConfig.HEIGHT / 2 + 8);
+        addObject(quizPanel,
+            GameConfig.WIDTH / 2,
+            GameConfig.HEIGHT / 2 + 8);
     }
 
     /** Membuat level sesuai nomor (1..3). */
@@ -76,7 +76,11 @@ public abstract class BaseLevel extends World
     }
 
     // musik ikut berhenti/lanjut saat tombol Pause/Run Greenfoot ditekan
-    public void started() { Audio.startMusic(); }
+    public void started()
+    {
+        if (quizOpen) Audio.startMenuMusic();
+        else Audio.startMusic();
+    }
     public void stopped() { Audio.pauseMusic(); }
 
     /** Hook: override di Level1/2/3 untuk menambah objek khusus level itu. */
@@ -254,6 +258,7 @@ public abstract class BaseLevel extends World
         if (quizOpen || boxOpened || gameOver || finished) return;
         quizOpen = true;
         box = b;
+        Audio.startMenuMusic();
         if (levelNo == 3)
         {   
             dimLayer = new DimLayer();
@@ -266,7 +271,7 @@ public abstract class BaseLevel extends World
         }
         else
         {
-        showQuizPanel();
+            showQuizPanel();
         }
     }
 
@@ -275,96 +280,97 @@ public abstract class BaseLevel extends World
     {
         quizOpen = false;
         boxOpened = true;
-    // Hapus panel soal sebelumnya
-    if (quizPanel != null)
-    {
-        removeObject(quizPanel);
-        quizPanel = null;
-    }
 
-    if (dimLayer != null)
-    {
-        removeObject(dimLayer);
-        dimLayer = null;
-    }
-
-    int bx = GameConfig.WIDTH / 2;
-    int by = GameConfig.HEIGHT / 2;
-
-    if (box != null)
-    {
-        bx = box.getX();
-        by = box.getY();
-    }
-
-    Audio.play(correct ? "benar.wav" : "salah.wav");
-
-    if (correct)
-    {
-        GameState.score += GameConfig.SCORE_PER_CORRECT;
-        GameState.quizCorrect++;
-
-        addObject(new FloatingText(
-            "+" + GameConfig.SCORE_PER_CORRECT,
-            28, UI.GOLD, 70, 1
-        ), bx, by);
-
-        // Level 1 dan 2 menghitung jawaban benar
-        if (levelNo != 3)
+        // Hapus panel soal sebelumnya
+        if (quizPanel != null)
         {
-            quizCorrectThisLevel++;
+            removeObject(quizPanel);
+            quizPanel = null;
         }
-    }
-    else
-    {
-        loseLife();
 
-        addObject(new FloatingText(
-            "-1 nyawa",
-            24, UI.RED, 70, 1
-        ), bx, by);
-    }
+        if (dimLayer != null)
+        {
+            removeObject(dimLayer);
+            dimLayer = null;
+        }
 
-    refreshHud();
-
-    // LEVEL 3: permainan kartu memori tetap seperti sebelumnya
-    if (levelNo == 3)
-    {
-        quizOpen = false;
-        boxOpened = true;
+        int bx = GameConfig.WIDTH / 2;
+        int by = GameConfig.HEIGHT / 2;
 
         if (box != null)
         {
-            removeObject(box);
-            box = null;
+            bx = box.getX();
+            by = box.getY();
         }
 
-    }
-
-    // LEVEL 1 DAN 2
-    if (quizCorrectThisLevel >= TARGET_QUIZ)
-    {
-        quizOpen = false;
-        boxOpened = true;
-
-        if (box != null)
         Audio.play(correct ? "benar.mp3" : "salah.mp3");
+
         if (correct)
         {
-            removeObject(box);
-            box = null;
+            GameState.score += GameConfig.SCORE_PER_CORRECT;
+            GameState.quizCorrect++;
+
+            addObject(new FloatingText(
+                "+" + GameConfig.SCORE_PER_CORRECT,
+                28, UI.GOLD, 70, 1
+            ), bx, by);
+
+            // Level 1 dan 2 menghitung jawaban benar
+            if (levelNo != 3)
+            {
+                quizCorrectThisLevel++;
+            }
+        }
+        else
+        {
+            loseLife();
+
+            addObject(new FloatingText(
+                "-1 nyawa",
+                24, UI.RED, 70, 1
+            ), bx, by);
         }
 
-        addObject(new FloatingText(
-            "3 SOAL SELESAI!",
-            30, UI.GOLD, 100, 0
-        ), GameConfig.WIDTH / 2, GameConfig.HEIGHT / 2);
+        refreshHud();
 
-    }
-    else
-    {
-        showQuizPanel();
-    }
+        // LEVEL 3: permainan kartu memori tetap seperti sebelumnya
+        if (levelNo == 3)
+        {
+            quizOpen = false;
+            boxOpened = true;
+            if (!gameOver) Audio.startMusic();
+
+            if (box != null)
+            {
+                removeObject(box);
+                box = null;
+            }
+            return;
+        }
+
+        // LEVEL 1 DAN 2
+        if (quizCorrectThisLevel >= TARGET_QUIZ)
+        {
+            quizOpen = false;
+            boxOpened = true;
+            if (!gameOver) Audio.startMusic();
+
+            if (box != null)
+            {
+                removeObject(box);
+                box = null;
+            }
+
+            addObject(new FloatingText(
+                "3 SOAL SELESAI!",
+                30, UI.GOLD, 100, 0
+            ), GameConfig.WIDTH / 2, GameConfig.HEIGHT / 2);
+        }
+        else if (!gameOver)
+        {
+            quizOpen = true;
+            showQuizPanel();
+        }
     }
 
     // ------------------------------------------------------------ event gameplay
@@ -428,8 +434,7 @@ public abstract class BaseLevel extends World
         return water[row][col];
     }
 
-    /** True kalau gameplay harus berhenti (p
-     * ause, kuis terbuka, atau level selesai). */
+    /** True kalau gameplay harus berhenti (pause, kuis terbuka, atau level selesai). */
     public boolean isFrozen()    { return paused || quizOpen || finished; }
     public boolean isPaused()    { return paused; }
     public boolean isGameOver()  { return gameOver; }

@@ -21,8 +21,10 @@ public class MainMenu extends World
         addObject(new Button("exit.png", 172, new Runnable() {
             public void run() { Greenfoot.stop(); }
         }), 400, 350);
+
+        Audio.startMenuMusic();
     }
 
-    public void started() { Audio.startMusic(); }
+    public void started() { Audio.startMenuMusic(); }
     public void stopped() { Audio.pauseMusic(); }
 }

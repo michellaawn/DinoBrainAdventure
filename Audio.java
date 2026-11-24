@@ -2,22 +2,26 @@ import greenfoot.*;
 import java.util.HashMap;
 
 /**
- * Pemutar suara yang aman: kalau file-nya belum ada di folder "sounds",
- * tidak terjadi apa-apa (tidak error).
+- Pemutar suara yang aman: kalau file-nya belum ada di folder "sounds",
+- tidak terjadi apa-apa (tidak error).
  *
- * Nama file yang dicari (taruh di folder sounds):
- *   music.mp3     musik latar (diputar berulang)
- *   coin.mp3      ambil koin
- *   benar.mp3     jawaban kuis benar
- *   salah.mp3     jawaban kuis salah / waktu habis
- *   gameover.mp3  kalah / nyawa habis
- *   victory.mp3   menang / selesai level
- * Volume diatur dari panel Pengaturan (Settings).
+- Nama file yang dicari (taruh di folder sounds):
+-   music.mp3       musik latar (diputar berulang)
+-   music_slow.mp3  musik latar menu & kuis
+-   click.mp3       klik tombol
+-   coin.mp3        ambil koin
+-   benar.mp3       jawaban kuis benar
+-   salah.mp3       jawaban kuis salah / waktu habis
+-   gameover.mp3    kalah / nyawa habis
+-   victory.mp3     menang / selesai level
+- Volume diatur dari panel Pengaturan (Settings).
  */
 public class Audio
 {
     private static GreenfootSound music;
     private static boolean musicTried = false;
+    private static GreenfootSound musicSlow;
+    private static boolean musicSlowTried = false;
     private static final HashMap<String, GreenfootSound> sfx = new HashMap<String, GreenfootSound>();
 
     private static GreenfootSound load(String file)
@@ -29,6 +33,7 @@ public class Audio
 
     public static void startMusic()
     {
+        if (musicSlow != null) musicSlow.pause();
         if (!musicTried)
         {
             musicTried = true;
@@ -41,15 +46,36 @@ public class Audio
         }
     }
 
+    public static void startMenuMusic()
+    {
+        if (music != null) music.pause();
+        if (!musicSlowTried)
+        {
+            musicSlowTried = true;
+            musicSlow = load("music_slow.mp3");
+        }
+        if (musicSlow != null)
+        {
+            musicSlow.setVolume(Settings.musicLevel());
+            if (!musicSlow.isPlaying()) musicSlow.playLoop();
+        }
+        else
+        {
+            startMusic();
+        }
+    }
+
     public static void pauseMusic()
     {
         if (music != null) music.pause();
+        if (musicSlow != null) musicSlow.pause();
     }
 
     /** Dipanggil setelah volume/mute berubah. */
     public static void refreshVolume()
     {
         if (music != null) music.setVolume(Settings.musicLevel());
+        if (musicSlow != null) musicSlow.setVolume(Settings.musicLevel());
     }
 
     public static void play(String file)
