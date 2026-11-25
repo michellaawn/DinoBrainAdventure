@@ -35,10 +35,29 @@ public abstract class BaseLevel extends World
     
     private void showQuizPanel()
     {
+        Question q = QuizData.get(levelNo);
+        if (q == null)
+        {
+            QuizData.reset(levelNo);
+            q = QuizData.get(levelNo);
+        }
+        if (q == null)
+        {
+            quizOpen = false;
+            boxOpened = true;
+            if (!gameOver) Audio.startMusic();
+            if (box != null)
+            {
+                removeObject(box);
+                box = null;
+            }
+            return;
+        }
+
         dimLayer = new DimLayer();
         addObject(dimLayer, GameConfig.WIDTH / 2, GameConfig.HEIGHT / 2);
 
-        quizPanel = new QuizPanel(QuizData.get(levelNo));
+        quizPanel = new QuizPanel(q);
 
         addObject(quizPanel,
             GameConfig.WIDTH / 2,
@@ -302,8 +321,6 @@ public abstract class BaseLevel extends World
             bx = box.getX();
             by = box.getY();
         }
-
-        Audio.play(correct ? "benar.mp3" : "salah.mp3");
 
         if (correct)
         {

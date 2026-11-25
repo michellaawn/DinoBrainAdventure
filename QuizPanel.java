@@ -59,6 +59,7 @@ public class QuizPanel extends Actor
         {
             chosen = TIMEOUT;
             correct = false;
+            Audio.play("salah.mp3");
             resultTimer = GameConfig.QUIZ_RESULT_FRAMES;
             render();
             return;
@@ -96,6 +97,7 @@ public class QuizPanel extends Actor
     {
         chosen = index;
         correct = (index == q.correct);
+        Audio.play(correct ? "benar.mp3" : "salah.mp3");
         resultTimer = GameConfig.QUIZ_RESULT_FRAMES;
         render();
     }
@@ -174,7 +176,7 @@ public class QuizPanel extends Actor
 
         char letter = (char) ('A' + q.correct);
         String msg;
-        if (correct)               msg = "BENAR!  +" + GameConfig.SCORE_PER_CORRECT + " poin";
+        if (correct)                msg = "BENAR!  +" + GameConfig.SCORE_PER_CORRECT + " poin";
         else if (chosen == TIMEOUT) msg = "WAKTU HABIS!  Jawaban: " + letter;
         else                        msg = "SALAH!  Jawaban benar: " + letter + "   (-1 nyawa)";
         UI.bold(img, msg, BAR_X + BAR_W / 2, BAR_Y + BAR_H / 2, 20, Color.WHITE);
