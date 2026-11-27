@@ -69,14 +69,11 @@ public class Dino extends Actor
             updateDead(level);
             return;
         }
-
-        // 1. input
         int dx = 0;
         if (Greenfoot.isKeyDown("left")  || Greenfoot.isKeyDown("a")) { dx -= GameConfig.MOVE_SPEED; facingLeft = true;  }
         if (Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("d")) { dx += GameConfig.MOVE_SPEED; facingLeft = false; }
         boolean jumpKey = Greenfoot.isKeyDown("space") || Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w");
 
-        // 2. fisika
         onGround = blocked(level, getX(), getY() + 1);
         if (onGround && jumpKey)
         {
@@ -88,7 +85,6 @@ public class Dino extends Actor
         moveY(level, vy);
         onGround = blocked(level, getX(), getY() + 1);
 
-        // 3. bahaya & animasi
         checkHazards(level);
         if (!dead) animate(dx != 0);
     }
@@ -118,7 +114,6 @@ public class Dino extends Actor
         }
     }
 
-    /** Apakah hitbox yang berpusat di (cx, cy) menabrak kotak padat? */
     private boolean blocked(BaseLevel level, int cx, int cy)
     {
         int t = GameConfig.TILE;

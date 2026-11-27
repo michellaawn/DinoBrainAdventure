@@ -1,11 +1,4 @@
 import greenfoot.*;
-
-/**
- * Induk semua level. Membaca peta dari LevelData, membuat objek-objeknya,
- * dan mengatur alur: kuis Mystery Box, pause, game over, level selesai.
- *
- * Level1 / Level2 / Level3 cukup mewarisi class ini.
- */
 public abstract class BaseLevel extends World
 {
     protected final int levelNo;
@@ -18,7 +11,7 @@ public abstract class BaseLevel extends World
     private Dino dino;
     private HUD hud;
     private MysteryBox box;
-    private Actor quizPanel;                 // QuizPanel (level 1-2) atau MemoryPanel (level 3)
+    private Actor quizPanel;                 //QuizPanel (level 1-2) atau MemoryPanel (level 3)
     private DimLayer dimLayer;
     private SettingsPanel settingsPanel;
     private Button resumeBtn, quitBtn;
@@ -45,7 +38,7 @@ public abstract class BaseLevel extends World
         GameConfig.HEIGHT / 2 + 8);
     }
 
-    /** Membuat level sesuai nomor (1..3). */
+    /*Membuat level sesuai nomor (1..3). */
     public static BaseLevel create(int n)
     {
         switch (n)
@@ -67,8 +60,8 @@ public abstract class BaseLevel extends World
         buildUI();
 
         setPaintOrder(Button.class, SettingsPanel.class, QuizPanel.class, MemoryPanel.class, DimLayer.class, FloatingText.class,
-                      HUD.class, Dino.class, MysteryBox.class, Flag.class,
-                      Spike.class, Coin.class, Sprite.class);
+                    HUD.class, Dino.class, MysteryBox.class, Flag.class,
+                    Spike.class, Coin.class, Sprite.class);
 
         prepareExtras();
         refreshHud();
@@ -182,7 +175,6 @@ public abstract class BaseLevel extends World
     {
         handlePauseKey();
         if (paused) return;
-
         if (finished)
         {
             endTimer--;
@@ -270,12 +262,12 @@ public abstract class BaseLevel extends World
         }
     }
 
-    /** Dipanggil QuizPanel setelah hasil jawaban selesai ditampilkan. */
+    /* Dipanggil QuizPanel setelah hasil jawaban selesai ditampilkan. */
     public void finishQuiz(boolean correct)
     {
         quizOpen = false;
         boxOpened = true;
-    // Hapus panel soal sebelumnya
+    //Hapus panel soal sebelumnya
     if (quizPanel != null)
     {
         removeObject(quizPanel);
@@ -332,15 +324,12 @@ public abstract class BaseLevel extends World
     {
         quizOpen = false;
         boxOpened = true;
-
         if (box != null)
         {
             removeObject(box);
             box = null;
         }
-
     }
-
     // LEVEL 1 DAN 2
     if (quizCorrectThisLevel >= TARGET_QUIZ)
     {
@@ -354,12 +343,10 @@ public abstract class BaseLevel extends World
             removeObject(box);
             box = null;
         }
-
         addObject(new FloatingText(
             "3 SOAL SELESAI!",
             30, UI.GOLD, 100, 0
         ), GameConfig.WIDTH / 2, GameConfig.HEIGHT / 2);
-
     }
     else
     {
@@ -374,7 +361,7 @@ public abstract class BaseLevel extends World
         Audio.play("coin.mp3");
         GameState.score += GameConfig.SCORE_PER_COIN;
         addObject(new FloatingText("+" + GameConfig.SCORE_PER_COIN, 18, UI.GOLD, 40, 1),
-                  c.getX(), c.getY() - 10);
+                    c.getX(), c.getY() - 10);
         removeObject(c);
         refreshHud();
     }
@@ -402,7 +389,7 @@ public abstract class BaseLevel extends World
         Audio.pauseMusic();
         Audio.play("victory.mp3");
         addObject(new FloatingText("LEVEL SELESAI!", 44, UI.GOLD, 110, 0),
-                  GameConfig.WIDTH / 2, GameConfig.HEIGHT / 2 - 20);
+                GameConfig.WIDTH / 2, GameConfig.HEIGHT / 2 - 20);
     }
 
     private void goNext()
@@ -411,7 +398,7 @@ public abstract class BaseLevel extends World
         if (levelNo >= GameConfig.TOTAL_LEVELS)
             Greenfoot.setWorld(new VictoryWorld());
         else
-            Greenfoot.setWorld(new LevelIntroWorld(levelNo + 1));
+            Greenfoot.setWorld (new LevelIntroWorld(levelNo + 1));      
     }
 
     // ------------------------------------------------------------ getter (dipakai actor lain)
