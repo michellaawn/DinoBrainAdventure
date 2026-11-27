@@ -34,12 +34,12 @@ public class LevelIntroWorld extends World
         addObject(walker, 120, 360);
     }
 
-    /** Teks rata tengah dengan font pilihan sendiri. shade = warna bayangan (null = tanpa bayangan). */
+
     private void drawText(GreenfootImage g, String s, int cx, int cy, int size, Color c, Color shade)
     {
         g.setFont(new Font(FONT_NAME, FONT_BOLD, false, size));
-        int x = cx - (int) (s.length() * size * 0.6) / 2;    // Courier New: lebar huruf = 60% ukuran
-        int y = cy + size / 3;                               // drawString memakai garis dasar huruf
+        int x = cx - (int) (s.length() * size * 0.6) / 2;    
+        int y = cy + size / 3;                               
         if (shade != null)
         {
             g.setColor(shade);

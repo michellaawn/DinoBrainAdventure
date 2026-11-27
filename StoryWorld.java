@@ -23,10 +23,8 @@ public class StoryWorld extends World
     {
         super(GameConfig.WIDTH, GameConfig.HEIGHT, 1);
         setBackground(Assets.get("bgs.jpg", GameConfig.WIDTH, GameConfig.HEIGHT));
-
         addObject(dialog, 400, 250);
         dialog.show(STORY[0]);
-
         nextBtn = new Button("next.png", 164, new Runnable() {
             public void run() { advance(); }
         });

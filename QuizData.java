@@ -52,7 +52,7 @@ public class QuizData
 
         if (used.size() >= bank.length)
         {
-            return null;
+            used.clear();
         }
         int i;
         do

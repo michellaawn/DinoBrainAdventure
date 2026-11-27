@@ -338,7 +338,8 @@ public abstract class BaseLevel extends World
             removeObject(box);
             box = null;
         }
-
+        
+        return;
     }
 
     // LEVEL 1 DAN 2
@@ -437,4 +438,6 @@ public abstract class BaseLevel extends World
     public Dino getDino()        { return dino; }
     public int getStartX()       { return startX; }
     public int getStartY()       { return startY; }
+    
+    
 }

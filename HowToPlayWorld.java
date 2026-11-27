@@ -1,10 +1,10 @@
 import greenfoot.*;
 
-/** Layar "Learn": cara bermain. (Dulu "LearnGame" + "panel_kontrol" + "tombol_ok") */
+/** Layar "Learn": cara bermain.  */
 public class HowToPlayWorld extends World
 {
     // ---- font teks petunjuk ----
-    private static final String  FONT_NAME = "Monospaced";   // <-- jenis font di sini
+    private static final String  FONT_NAME = "Monospaced";   
     private static final boolean FONT_BOLD = true;
 
     // ---- posisi (kecilkan angka Y = lebih ke atas) ----
@@ -24,7 +24,6 @@ public class HowToPlayWorld extends World
     public HowToPlayWorld()
     {
         super(GameConfig.WIDTH, GameConfig.HEIGHT, 1);
-
         GreenfootImage bg = Assets.get("bg_story.png", GameConfig.WIDTH, GameConfig.HEIGHT);
         UI.dim(bg, 90);
     
@@ -46,7 +45,7 @@ public class HowToPlayWorld extends World
         }), 400, BUTTON_Y);
     }
 
-    /** Teks rata tengah dengan font pilihan sendiri. shade = warna bayangan (null = tanpa bayangan). */
+    /** Teks rata tengah, shade = warna bayangan (null = tanpa bayangan). */
     private void drawText(GreenfootImage g, String s, int cx, int cy, int size, Color c, Color shade)
     {
         g.setFont(new Font(FONT_NAME, FONT_BOLD, false, size));

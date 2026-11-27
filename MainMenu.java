@@ -1,6 +1,6 @@
 import greenfoot.*;
 
-/** Menu utama: logo + tombol Start / Learn / Exit. (Dulu bernama "bg" + "Beranda_Logo") */
+/** Menu utama: logo + tombol Start / Learn / Exit. */
 public class MainMenu extends World
 {
     public MainMenu()
