@@ -374,6 +374,7 @@ dependency98.type=UsesDependency
 dependency99.from=FloatingText
 dependency99.to=UI
 dependency99.type=UsesDependency
+<<<<<<< HEAD
 editor.fx.0.height=0
 editor.fx.0.width=0
 editor.fx.0.x=0
@@ -383,6 +384,13 @@ height=830
 package.numDependencies=116
 =======
 height=744
+=======
+editor.fx.0.height=737
+editor.fx.0.width=814
+editor.fx.0.x=360
+editor.fx.0.y=26
+height=830
+>>>>>>> emeli
 package.numDependencies=119
 >>>>>>> df5310bde8239b865aa4eea92dbbdd998aafb122
 package.numTargets=37
@@ -661,10 +669,15 @@ target9.x=0
 target9.y=0
 version=3.1.0
 <<<<<<< HEAD
+<<<<<<< HEAD
 width=1550
 =======
 width=1382
 >>>>>>> df5310bde8239b865aa4eea92dbbdd998aafb122
 world.lastInstantiated=Level3
+=======
+width=1550
+world.lastInstantiated=Level2
+>>>>>>> emeli
 xPosition=0
 yPosition=0

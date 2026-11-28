@@ -1,19 +1,15 @@
 import greenfoot.*;
-
-/** Layar tamat setelah Level 3: ringkasan skor + bintang. */
 public class VictoryWorld extends World
 {
     public VictoryWorld()
     {
         super(GameConfig.WIDTH, GameConfig.HEIGHT, 1);
-
         GreenfootImage bg = Assets.get("bg_story.png", GameConfig.WIDTH, GameConfig.HEIGHT);
         UI.dim(bg, 120);
-
+        
         UI.shadow(bg, "SELAMAT!", 400, 70, 64, UI.GOLD, UI.DARK);
         UI.bold(bg, "Dino berhasil menemukan jalan pulang!", 400, 120, 22, Color.WHITE);
 
-        // bintang = jumlah kuis yang dijawab benar
         for (int i = 0; i < GameConfig.TOTAL_LEVELS; i++)
         {
             Color c = i < GameState.quizCorrect ? UI.GOLD : new Color(90, 90, 90);
@@ -33,8 +29,16 @@ public class VictoryWorld extends World
             }
         }), 290, 380);
 
-        addObject(new Button("Menu Utama", 200, 50, new Runnable() {
-            public void run() { Greenfoot.setWorld(new MainMenu()); }
+        addObject(new Button("Main Lagi", 200, 50, new Runnable() {
+        public void run()
+        {
+        GameState.newGame();
+        Greenfoot.setWorld(new LevelIntroWorld(1));
+        }
+    }), 290, 380);
+
+        addObject(new Button("Next", 200, 50, new Runnable() {
+        public void run() { Greenfoot.setWorld(new EndingWorld()); }
         }), 510, 380);
-    }
+        }
 }

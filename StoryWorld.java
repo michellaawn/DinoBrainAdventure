@@ -18,7 +18,7 @@ public class StoryWorld extends World
     private int index = 0;
     private final StoryDialog dialog = new StoryDialog();
     private Button nextBtn, startBtn;
-
+    
     public StoryWorld()
     {
         super(GameConfig.WIDTH, GameConfig.HEIGHT, 1);
@@ -33,6 +33,7 @@ public class StoryWorld extends World
         });
         addObject(nextBtn, 400, 350);
     }
+ 
 
     public void act()
     {
