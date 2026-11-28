@@ -20,7 +20,6 @@ public class Flag extends Actor
     {
         BaseLevel level = (BaseLevel) getWorld();
         if (level == null || level.isFrozen()) return;
-
         boolean shouldLock = !level.isBoxOpened();
         if (shouldLock != lockedNow)
         {
@@ -29,13 +28,10 @@ public class Flag extends Actor
         }
 
         if (cooldown > 0) cooldown--;
-
         if (level.getDino().overlaps(getX(), getY(), 14, 24))
         {
-            if (level.isBoxOpened())
-            {
-                level.completeLevel();
-            }
+            if (level.isBoxOpened()){
+                level.completeLevel();}
             else if (cooldown == 0)
             {
                 cooldown = 100;

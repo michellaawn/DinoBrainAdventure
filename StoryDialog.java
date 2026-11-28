@@ -17,6 +17,10 @@ public class StoryDialog extends Actor
     {
         show("");
     }
+    
+    public StoryDialog(int width, int height)
+    {
+    }
 
     public void show(String text)
     {
