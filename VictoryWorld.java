@@ -4,7 +4,8 @@ public class VictoryWorld extends World
     public VictoryWorld()
     {
         super(GameConfig.WIDTH, GameConfig.HEIGHT, 1);
-        GreenfootImage bg = Assets.get("bg_story.png", GameConfig.WIDTH, GameConfig.HEIGHT);
+        Audio.startMenuMusic(); 
+        GreenfootImage bg = Assets.get("victory.jpg", GameConfig.WIDTH, GameConfig.HEIGHT);
         UI.dim(bg, 120);
         
         UI.shadow(bg, "SELAMAT!", 400, 70, 64, UI.GOLD, UI.DARK);
@@ -41,4 +42,5 @@ public class VictoryWorld extends World
         public void run() { Greenfoot.setWorld(new EndingWorld()); }
         }), 510, 380);
         }
+        
 }

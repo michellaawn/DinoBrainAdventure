@@ -321,22 +321,7 @@ public abstract class BaseLevel extends World
             bx = box.getX();
             by = box.getY();
         }
-<<<<<<< HEAD
-        
-        return;
-    }
 
-    // LEVEL 1 DAN 2
-    if (quizCorrectThisLevel >= TARGET_QUIZ)
-    {
-        quizOpen = false;
-        boxOpened = true;
-
-        if (box != null)
-        Audio.play(correct ? "benar.mp3" : "salah.mp3");
-=======
-
->>>>>>> df5310bde8239b865aa4eea92dbbdd998aafb122
         if (correct)
         {
             GameState.score += GameConfig.SCORE_PER_CORRECT;
@@ -364,8 +349,6 @@ public abstract class BaseLevel extends World
         }
 
         refreshHud();
-
-        // LEVEL 3: permainan kartu memori tetap seperti sebelumnya
         if (levelNo == 3)
         {
             quizOpen = false;
@@ -474,6 +457,4 @@ public abstract class BaseLevel extends World
     public Dino getDino()        { return dino; }
     public int getStartX()       { return startX; }
     public int getStartY()       { return startY; }
-    
-    
 }
